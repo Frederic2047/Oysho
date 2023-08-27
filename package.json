@@ -1,0 +1,18 @@
+{
+  "name": "oysho",
+  "version": "1.0.0",
+  "description": "Prueba tecnica Oysho",
+  "main": "index.js",
+  "scripts": {
+    "oysho:open": "cypress open",
+    "test-edge": "cypress run --spec cypress/e2e/tests/visit_Oysho.cy.js --browser edge",
+    "test-electron": "cypress run --spec cypress/e2e/tests/visit_Oysho.cy.js --browser electron",
+    "test-chrome": "cypress run --spec cypress/e2e/tests/visit_Oysho.cy.js --browser chrome"
+  },
+  "author": "Frederic Pascual",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.17.4",
+    "cypress-browser-permissions": "^1.1.0"
+  }
+}
