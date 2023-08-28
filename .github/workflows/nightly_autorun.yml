@@ -1,6 +1,8 @@
 name: 'Oysho autorun test on Cypress'
-
-on:
+run-name: Oysho Test
+on: 
+  push:
+  pull_request:
   schedule:
     - cron: "0 23 * * *"
 
