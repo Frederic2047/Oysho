@@ -2,12 +2,11 @@ name: 'Oysho autorun test on Cypress'
 run-name: Oysho Test
 on: 
   push:
-  pull_request:
   schedule:
     - cron: "0 23 * * *"
 
 jobs:
-  cypress:
+  cypress-run:
     runs-on: ubuntu:latest
 
     steps:
