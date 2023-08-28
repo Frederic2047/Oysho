@@ -2,7 +2,7 @@ name: 'Oysho autorun test on Cypress'
 
 on:
   schedule:
-    - cron: "0 22 * * *"
+    - cron: "0 23 * * *"
 
 jobs:
   cypress:
