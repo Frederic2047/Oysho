@@ -1,31 +1,39 @@
 describe('Searching some articles', () => {
     beforeEach(() => {
-      cy.request({
-        method: 'GET',
-        url: 'http://www.oysho.com',
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-            'Accept-Language': 'es-ES,es;q=0.9',
-            'Referer': 'http://www.oysho.com',
-        },
-        followRedirect: true, 
-      })
+        cy.visit({
+            url: "https://www.oysho.com/es/index.html",
+            headers: {
+              'Accept' : 'cy.accept()',
+              'User-Agent': 'cy.user-Agent()',
+              'Accept-Encoding': 'cy.enconding()',
+              'Accept-Language': 'cy.language()',
+              'Cache-Control': 'cy.cachecontrol()',
+              'Connection': 'cy.connection()',
+              'Cookie': 'cy.Cookie()',
+              'Host': 'www.oysho.com',
+              'Sec-Ch-Ua': 'cy.sec-Ch-Ua()',
+              'Sec-Ch-Ua-Mobile': '?0',
+              'Sec-Ch-Ua-Platform': "Windows",
+              'Sec-Fetch-Dest': 'empty',
+              'Sec-Fetch-Mode': 'navigate',
+              'Sec-Fetch-Site': 'same-origin',
+              'Upgrade-Insecure-Requests': 1,
+            }
+        })
+        cy.cookies_banner()
+
     });
   
     it('Click search button and type for search articles', () => {
-       
-        cy.get('[placeholder("Buscar")]').click().type('pantalon{enter}')
-        //click on first result 
-        cy.get('img.x-result-picture-image').first().click();
-    });
+        cy.viewport(1600, 900);
+        cy.get('.header__search--title').click()
+        cy.get('[data-test="search-input"]').type('pantalon{enter}');
+        cy.get('article.x-result:first').filter('[data-test="search-grid-result"]').click()
+        cy.get('button.sizes__list-size-name').eq(2).contains('M').click();
 
-    it('select size and add to cart', () => {
-        cy.get('.sizes__list-size').contains('M').click();
-        cy.get('.detail-sizes-selector__wrapper-actions').click()
-    })
-
-    it('see shopping bag ', () => {
+        //see shopping bag
         cy.get('.shopcart-header__button').click()
-    })
+
+
+    });
 });
