@@ -5,14 +5,14 @@ on:
     branches: [main]
   schedule:
       - cron: "0 23 * * *"
-
+    
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     name: Test Artifacts
     steps:
       - uses: actions/checkout@v2
-      - uses: cypress-io/github-action@v4
+      - uses: cypress-io/github-action@v5.8.2
       - uses: actions/upload-artifact@v2
         if: failure()
         with:
@@ -37,10 +37,10 @@ jobs:
         run: npm install
       
       - name: Cypress.io
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5.8.2
         with: 
+          browser: chrome
           start: npm run oysho:run --headed
           record: true
-          browser: chrome
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
