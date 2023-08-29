@@ -4,6 +4,7 @@
   "description": "Prueba tecnica Oysho",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build",
     "oysho:open": "cypress open",
     "oysho:run": "cypress run",
     "test-edge": "cypress run --spec cypress/e2e/tests/visit_Oysho.cy.js --browser edge",
