@@ -1,12 +1,14 @@
 name: 'Oysho autorun test on Cypress'
-
-on:
+run-name: Oysho Test
+on: 
+  push:
+    branches: [main]
   schedule:
-    - cron: "0 23 * * *"
+      - cron: "0 23 * * *"
 
 jobs:
-  cypress:
-    runs-on: ubuntu:latest
+  cypress-run:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -20,6 +22,11 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-
-      - name: Run Cypress Tests
-        run: npm run oysho:run
+      
+      - name: Cypress.io
+        uses: cypress-io/github-action@v5.8.2
+        with: 
+          start: npm run oysho:run --headed
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
