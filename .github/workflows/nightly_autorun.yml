@@ -9,6 +9,7 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     name: Test Artifacts
     steps:
       - uses: actions/checkout@v2
@@ -40,7 +41,9 @@ jobs:
         uses: cypress-io/github-action@v4
         with: 
           browser: chrome
-          start: npm run oysho:run --headed
+          start: npm run oysho:run
+          wait-on: 'https://www.oysho.com'
+          wait-on-timeout: 120
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
