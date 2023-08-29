@@ -26,4 +26,4 @@ jobs:
       - name: Cypress.io
         uses: cypress-io/github-action@v5.8.2
         with: 
-          start: npm run oyshon:run --browser chrome --headed
+          start: npm run oysho:run --browser chrome --headed
