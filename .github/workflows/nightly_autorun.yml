@@ -28,7 +28,6 @@ jobs:
       - name: Cypress.io
         uses: cypress-io/github-action@v5
         with: 
-          build: npm run build
           browser: chrome
           start: npm run oysho:run
           wait-on: 'https://www.oysho.com'
